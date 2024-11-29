@@ -1,4 +1,4 @@
-package com.example.e_bakti
+package com.example.e_bakti.panitia
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -9,18 +9,17 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.e_bakti.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -30,20 +29,47 @@ fun LoginScreen() {
 
     Box(
         modifier = Modifier
-            .clip(RoundedCornerShape(30.dp))
-            .background(Color.White)
-            .width(360.dp)
+            .fillMaxSize()
     ) {
-        Column {
+        Image(
+            painter = painterResource(id = R.drawable.bakti),
+            contentDescription = "Header Image",
+            modifier = Modifier
+                .fillMaxWidth(),
+            contentScale = ContentScale.Crop
+        )
+        Column (
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .clip(RoundedCornerShape(25.dp))
+                .padding(top = 372.dp)
+                .fillMaxSize()
+                .background(Color.White)
+        ){
             Image(
-                painter = painterResource(id = R.drawable.bakti),
+                painter = painterResource(id = R.drawable.logo),
                 contentDescription = "Header Image",
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .aspectRatio(0.98f),
-                contentScale = ContentScale.Fit
+                    .requiredWidth(86.dp)
+                    .requiredHeight(43.dp)
             )
+            Text(
+                text = buildAnnotatedString {
+                    withStyle(style = SpanStyle(color = Color(0xFF009B4A))) {
+                        append("Log in")
+                    }
+                    append(" to your account.")},
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(top = 16.dp)
+                )
 
+            }
+            }
+
+
+
+        /*
             Column(
                 modifier = Modifier
                     .offset(y = (-60).dp)
@@ -66,32 +92,9 @@ fun LoginScreen() {
                         contentScale = ContentScale.Fit
                     )
 
-                    Text(
-                        text = buildAnnotatedString {
-                            withStyle(style = SpanStyle(color = Color(0xFF009B4A))) {
-                                append("Log in")
-                            }
-                            append(" to your account.")
-                        },
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(top = 16.dp)
-                    )
 
-                    OutlinedTextField(
-                        value = email,
-                        onValueChange = { email = it },
-                        label = { Text("Email") },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 40.dp)
-                            .height(41.dp)
-                            .shadow(4.dp),
-                        shape = RoundedCornerShape(6.dp),
-                        colors = TextFieldDefaults.outlinedTextFieldColors(
-                            containerColor = Color(0xFF689581)
-                        )
-                    )
+
+
 
                     OutlinedTextField(
                         value = password,
@@ -147,6 +150,10 @@ fun LoginScreen() {
             }
         }
     }
+}
+
+ */
+
 }
 
 @Preview(showBackground = true)
