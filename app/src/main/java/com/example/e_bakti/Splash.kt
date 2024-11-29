@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -21,9 +22,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import kotlinx.coroutines.delay
 
 @Composable
-fun Splash(modifier: Modifier = Modifier) {
+fun SplashScreen(navController: NavController, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .requiredWidth(width = 402.dp)
@@ -36,28 +40,44 @@ fun Splash(modifier: Modifier = Modifier) {
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
-                .offset(x = 70.dp,
-                    y = 250.dp)
+                .offset(
+                    x = 70.dp,
+                    y = 250.dp
+                )
                 .requiredWidth(width = 262.dp)
                 .requiredHeight(height = 138.dp)
-                .border(border = BorderStroke(0.dp, Color.White)))
+                .border(border = BorderStroke(0.dp, Color.White))
+        )
         Text(
             text = "E-Bakti",
             color = Color.Black,
             textAlign = TextAlign.Center,
             style = TextStyle(
                 fontSize = 20.sp,
-                fontWeight = FontWeight.Bold),
+                fontWeight = FontWeight.Bold
+            ),
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
-                .offset(x = 146.dp,
-                    y = 388.dp)
-                .requiredWidth(width = 109.dp))
+                .offset(
+                    x = 146.dp,
+                    y = 388.dp
+                )
+                .requiredWidth(width = 109.dp)
+        )
+    }
+    // Delay selama 2 detik sebelum pindah ke LoginScreen
+    LaunchedEffect(Unit) {
+        delay(2000)
+        navController.navigate("login") { // Pindah ke LoginScreen
+            popUpTo("splash") { inclusive = true } // Menghapus splash dari stack
+        }
     }
 }
 
-@Preview(widthDp = 402, heightDp = 874)
+
+@Preview(showBackground = true)
 @Composable
-private fun SplashPreview() {
-    Splash(Modifier)
+fun PreviewSplashScreen() {
+    val navController = rememberNavController()
+    SplashScreen(navController = navController)
 }
