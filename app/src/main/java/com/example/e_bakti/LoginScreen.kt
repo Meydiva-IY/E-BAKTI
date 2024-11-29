@@ -21,6 +21,8 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.text.TextStyle
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -30,20 +32,54 @@ fun LoginScreen() {
 
     Box(
         modifier = Modifier
-            .clip(RoundedCornerShape(30.dp))
-            .background(Color.White)
-            .width(360.dp)
+            .fillMaxSize()
     ) {
-        Column {
-            Image(
-                painter = painterResource(id = R.drawable.bakti),
-                contentDescription = "Header Image",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .aspectRatio(0.98f),
-                contentScale = ContentScale.Fit
-            )
+        Image(
+            painter = painterResource(id = R.drawable.bakti),
+            contentDescription = "Header Image",
+            modifier = Modifier
+                .fillMaxWidth(),
+            contentScale = ContentScale.Crop
+        )
 
+        Box(
+            modifier = Modifier
+                .clip(RoundedCornerShape(25.dp))
+                .padding(top = 372.dp)
+                .fillMaxSize()
+                .background(Color.White)
+        ) {
+            Column (
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .padding(top = 17.dp)
+                    .fillMaxWidth()
+            ){
+                Image(
+                    painter = painterResource(id = R.drawable.logo),
+                    contentDescription = "Header Image",
+                    modifier = Modifier
+                        .requiredWidth(86.dp)
+                        .requiredHeight(43.dp)
+                )
+                Text(
+                    text = buildAnnotatedString {
+                        withStyle(style = SpanStyle(color = Color(0xFF009B4A))) {
+                            append("Log in")
+                        }
+                        append(" to your account.")
+                    },
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(top = 16.dp)
+                )
+
+            }
+            }
+
+
+
+        /*
             Column(
                 modifier = Modifier
                     .offset(y = (-60).dp)
@@ -66,32 +102,9 @@ fun LoginScreen() {
                         contentScale = ContentScale.Fit
                     )
 
-                    Text(
-                        text = buildAnnotatedString {
-                            withStyle(style = SpanStyle(color = Color(0xFF009B4A))) {
-                                append("Log in")
-                            }
-                            append(" to your account.")
-                        },
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(top = 16.dp)
-                    )
 
-                    OutlinedTextField(
-                        value = email,
-                        onValueChange = { email = it },
-                        label = { Text("Email") },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 40.dp)
-                            .height(41.dp)
-                            .shadow(4.dp),
-                        shape = RoundedCornerShape(6.dp),
-                        colors = TextFieldDefaults.outlinedTextFieldColors(
-                            containerColor = Color(0xFF689581)
-                        )
-                    )
+
+
 
                     OutlinedTextField(
                         value = password,
@@ -146,6 +159,11 @@ fun LoginScreen() {
                 )
             }
         }
+    }
+}
+
+ */
+
     }
 }
 
