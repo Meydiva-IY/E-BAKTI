@@ -1,5 +1,6 @@
 package com.example.e_bakti.panitia
 
+import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -13,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
@@ -42,7 +44,7 @@ fun LoginScreen() {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .clip(RoundedCornerShape(25.dp))
-                .padding(top = 372.dp)
+                .padding(top = 280.dp)
                 .fillMaxSize()
                 .background(Color.White)
         ){
@@ -50,6 +52,7 @@ fun LoginScreen() {
                 painter = painterResource(id = R.drawable.logo),
                 contentDescription = "Header Image",
                 modifier = Modifier
+                    .padding(top = 15.dp)
                     .requiredWidth(86.dp)
                     .requiredHeight(43.dp)
             )
@@ -63,96 +66,111 @@ fun LoginScreen() {
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(top = 16.dp)
                 )
-
-            }
-            }
-
-
-
-        /*
-            Column(
-                modifier = Modifier
-                    .offset(y = (-60).dp)
-                    .clip(RoundedCornerShape(25.dp))
-                    .background(Color(0xFFE6E8DA))
-                    .shadow(18.dp)
-                    .fillMaxWidth()
-                    .padding(top = 15.dp)
-            ) {
-                Column(
-                    modifier = Modifier.padding(horizontal = 33.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.logo),
-                        contentDescription = "Logo",
-                        modifier = Modifier
-                            .width(76.dp)
-                            .aspectRatio(1.9f),
-                        contentScale = ContentScale.Fit
+            Column (modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 30.dp, vertical = 30.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ){
+                Spacer(modifier = Modifier.height(30.dp))
+                Text(
+                    text = "Phone Number",
+                    color = Color.Black,
+                    style = TextStyle(
+                        fontSize = 15.sp
+                    ),
+                    modifier = Modifier
+                        .align(Alignment.Start)
+                )
+                OutlinedTextField(
+                    value = email,
+                    onValueChange = { email = it },
+                    label = { Text(text = "Phone Number") },
+                    singleLine = true,
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    shape = RoundedCornerShape(16.dp),
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        containerColor = Color(0xFF689581)
                     )
-
-
-
-
-
-                    OutlinedTextField(
-                        value = password,
-                        onValueChange = { password = it },
-                        label = { Text("Password") },
-                        visualTransformation = PasswordVisualTransformation(),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 34.dp)
-                            .height(41.dp)
-                            .shadow(4.dp),
-                        shape = RoundedCornerShape(6.dp),
-                        colors = TextFieldDefaults.outlinedTextFieldColors(
-                            containerColor = Color(0xFF689581)
-                        )
+                )
+                Spacer(modifier = Modifier.height(30.dp))
+                Text(
+                    text = "Password",
+                    color = Color.Black,
+                    style = TextStyle(
+                        fontSize = 15.sp
+                    ),
+                    modifier = Modifier
+                        .align(Alignment.Start)
+                )
+                OutlinedTextField(
+                    value = password,
+                    onValueChange = { password = it },
+                    label = { Text(text = "Password") },
+                    singleLine = true,
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    shape = RoundedCornerShape(16.dp),
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        containerColor = Color(0xFF689581)
                     )
-
+                )
+                Spacer(modifier = Modifier.height(15.dp))
+                Row (horizontalArrangement = Arrangement.Center
+                ){
                     Text(
-                        text = "Forgot password",
-                        fontSize = 11.sp,
+                        text = "Register",
+                        color = Color.Black,
+                        style = TextStyle(
+                            fontSize = 15.sp
+                        ),
                         modifier = Modifier
-                            .align(Alignment.End)
-                            .padding(top = 19.dp)
                     )
-
-                    Button(
-                        onClick = { /* Handle login */ },
+                    Spacer(modifier = Modifier.weight(1f))
+                    Text(
+                        text = "Forgot Password?",
+                        color = Color.Black,
+                        style = TextStyle(
+                            fontSize = 15.sp
+                        ),
                         modifier = Modifier
-                            .width(135.dp)
-                            .padding(top = 24.dp)
-                            .shadow(4.dp),
-                        shape = RoundedCornerShape(6.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF009B4A)
-                        )
-                    ) {
+                    )
+                }
+                Spacer(modifier = Modifier.height(25.dp))
+                Button(
+                    onClick = {
+
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF009B4A)),
+                    modifier = Modifier
+                        .requiredWidth(154.5.dp)
+                        .requiredHeight(40.dp),
+                    shape = RoundedCornerShape(8.dp)
+                ) {
+                    Column() {
                         Text(
                             text = "Login",
-                            fontWeight = FontWeight.Bold
+                            color = Color.Black,
+                            style = TextStyle(
+                                fontSize = 15.sp
+                            )
                         )
                     }
                 }
-
-                Image(
-                    painter = painterResource(id = R.drawable.footerlogin),
-                    contentDescription = "Footer Image",
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 28.dp)
-                        .aspectRatio(4.74f),
-                    contentScale = ContentScale.Fit
-                )
             }
-        }
-    }
-}
 
- */
+        }
+        Image(
+            painter = painterResource(id = R.drawable.footerlogin),
+            contentDescription = "Footer",
+            modifier = Modifier
+                .requiredHeight(100.dp)
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter),
+            contentScale = ContentScale.Crop
+        )
+    }
+
 
 }
 
