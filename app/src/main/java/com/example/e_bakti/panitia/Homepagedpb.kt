@@ -19,7 +19,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.e_bakti.R
 
 @Composable
-fun HomepagePanitiaBakti(navController: NavController, modifier: Modifier = Modifier) {
+fun HomepagePanitiaBaktidpb(navController: NavController, modifier: Modifier = Modifier) {
 
     val outerPadding = 32.dp
 
@@ -33,10 +33,12 @@ fun HomepagePanitiaBakti(navController: NavController, modifier: Modifier = Modi
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
+        //kolom kontent
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxWidth()
         ){
+            //header hijau
             Image(
                 painter = painterResource(id = R.drawable.footerlog),
                 contentDescription = "Hijau header",
@@ -44,7 +46,7 @@ fun HomepagePanitiaBakti(navController: NavController, modifier: Modifier = Modi
                     .fillMaxWidth(),
                 contentScale = ContentScale.Crop
             )
-
+//judul dan logo background
             Spacer(modifier = Modifier.height(30.dp))
             Row(
                 verticalAlignment = Alignment.CenterVertically
@@ -65,6 +67,7 @@ fun HomepagePanitiaBakti(navController: NavController, modifier: Modifier = Modi
                 )
 
             }
+            //button - button
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -78,33 +81,66 @@ fun HomepagePanitiaBakti(navController: NavController, modifier: Modifier = Modi
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffdfae4)),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .requiredHeight(77.14.dp),
+                        .requiredHeight(200.dp), // Tinggi tombol yang lebih besar
                     shape = RoundedCornerShape(8.dp)
                 ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
+                    Column(
                         modifier = Modifier
-                            .fillMaxWidth()
+                            .fillMaxWidth(),
+                        verticalArrangement = Arrangement.Center
                     ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.fluentcolorbuildingpeople16),
-                            contentDescription = "Data Peserta Bakti ",
-                            modifier = Modifier
-                                .size(40.dp)
-                        )
-                        Spacer(modifier = Modifier.width(100.dp))
-                        Text(
-                            text = "DATA PESERTA BAKTI",
-                            color = Color(0xff337557),
-                            style = TextStyle(
-                                fontSize = 20.sp
-                            ),
-                            modifier = Modifier
-                        )
-                        Spacer(modifier = Modifier.width(30.dp))
-
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.fluentcolorbuildingpeople16),
+                                contentDescription = "Data Peserta Bakti ",
+                                modifier = Modifier
+                                    .size(40.dp)
+                            )
+                            Spacer(modifier = Modifier.width(100.dp))
+                            Text(
+                                text = "DATA PESERTA DIDIK",
+                                color = Color(0xff337557),
+                                style = TextStyle(
+                                    fontSize = 20.sp
+                                ),
+                                modifier = Modifier
+                            )
+                        }
+                        //subumenu
+                        Spacer(modifier = Modifier.height(16.dp)) // Jarak antara teks dan sub menu
+                        Column(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Text(
+                                text = "Kelompok Peserta",
+                                color = Color(0xff337557),
+                                style = TextStyle(
+                                    fontSize = 16.sp
+                                ),
+                                modifier = Modifier
+                            )
+                            Text(
+                                text = "Pengelolaan Absen Peserta",
+                                color = Color(0xff337557),
+                                style = TextStyle(
+                                    fontSize = 16.sp
+                                ),
+                                modifier = Modifier
+                            )
+                            Text(
+                                text = "Riwayat Penyakit",
+                                color = Color(0xff337557),
+                                style = TextStyle(
+                                    fontSize = 16.sp
+                                ),
+                                modifier = Modifier
+                            )
+                        }
                     }
-
                 }
                 Spacer(modifier = Modifier.height(10.dp))
                 Button(
@@ -211,7 +247,7 @@ fun HomepagePanitiaBakti(navController: NavController, modifier: Modifier = Modi
             verticalArrangement = Arrangement.Bottom,
             horizontalAlignment = Alignment.CenterHorizontally,
 
-        ){
+            ){
             Navigation(navController, modifier = Modifier)
 
         }
@@ -222,8 +258,8 @@ fun HomepagePanitiaBakti(navController: NavController, modifier: Modifier = Modi
 
 @Preview(showBackground = true)
 @Composable
-fun HomepagePanitiaBaktiPreview() {
+fun HomepagePanitiaBaktidpbPreview() {
     val navController = rememberNavController()
-    HomepagePanitiaBakti(navController = navController)
+    HomepagePanitiaBaktidpb(navController = navController)
 }
 

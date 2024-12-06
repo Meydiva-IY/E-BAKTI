@@ -19,7 +19,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.e_bakti.R
 
 @Composable
-fun HomepagePanitiaBakti(navController: NavController, modifier: Modifier = Modifier) {
+fun HomepagePanitiaBakticdt(navController: NavController, modifier: Modifier = Modifier) {
 
     val outerPadding = 32.dp
 
@@ -156,7 +156,7 @@ fun HomepagePanitiaBakti(navController: NavController, modifier: Modifier = Modi
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.fluentcolorclipboardtextedit32),
-                            contentDescription = "Data Peserta Bakti ",
+                            contentDescription = "Penilaian Peserta ",
                             modifier = Modifier
                                 .size(40.dp)
                         )
@@ -211,7 +211,7 @@ fun HomepagePanitiaBakti(navController: NavController, modifier: Modifier = Modi
             verticalArrangement = Arrangement.Bottom,
             horizontalAlignment = Alignment.CenterHorizontally,
 
-        ){
+            ){
             Navigation(navController, modifier = Modifier)
 
         }
@@ -222,8 +222,8 @@ fun HomepagePanitiaBakti(navController: NavController, modifier: Modifier = Modi
 
 @Preview(showBackground = true)
 @Composable
-fun HomepagePanitiaBaktiPreview() {
+fun HomepagePanitiaBakticdtPreview() {
     val navController = rememberNavController()
-    HomepagePanitiaBakti(navController = navController)
+    HomepagePanitiaBakticdt(navController = navController)
 }
 

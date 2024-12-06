@@ -61,29 +61,134 @@ fun Notifpage(navController: NavController, modifier: Modifier = Modifier) {
         ) {
             Spacer(modifier = Modifier.height(20.dp))
             Box(modifier = Modifier
+                .clip (shape = RoundedCornerShape(10.dp))
                 .requiredWidth(296.dp)
                 .requiredHeight(120.dp)
                 .background(color = Color(0xFFFDFAE4))
-                .clip (shape = RoundedCornerShape(10.dp))
+
             ){
+                Column (
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .padding(horizontal = 10.dp)
+                ){
+                    Text(
+                        text = "Challenge Baru",
+                        color = Color(0xFF337557),
+                        style = TextStyle(
+                            fontSize = 15.sp),
+                        modifier = Modifier
+                            .padding(top = 5.dp)
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Text(
+                        text = "Challenge 1: Buatlah video perkenalan kampus dengan durasi min 5 menit. upload di instragram dan gunakan cap..",
+                        color = Color(0xFF337557),
+                        style = TextStyle(
+                            fontSize = 15.sp),
+                        modifier = Modifier
+                            .padding(top = 5.dp)
+                    )
+                }
 
             }
             Spacer(modifier = Modifier.height(20.dp))
             Box(modifier = Modifier
+                .clip (shape = RoundedCornerShape(10.dp))
                 .requiredWidth(296.dp)
                 .requiredHeight(120.dp)
                 .background(color = Color(0xFFFDFAE4))
-                .clip (shape = RoundedCornerShape(10.dp))
+
             ){
+                Column (
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .padding(horizontal = 10.dp)
+                ){
+                    Text(
+                        text = "Challenge Baru",
+                        color = Color(0xFF337557),
+                        style = TextStyle(
+                            fontSize = 15.sp),
+                        modifier = Modifier
+                            .padding(top = 5.dp)
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Text(
+                        text = "Challenge 2: Buatlah video perkenalan kampus dengan durasi min 5 menit. upload di instragram dan gunakan cap..",
+                        color = Color(0xFF337557),
+                        style = TextStyle(
+                            fontSize = 15.sp),
+                        modifier = Modifier
+                            .padding(top = 5.dp)
+                    )
+                }
+
 
             }
             Spacer(modifier = Modifier.height(20.dp))
             Box(modifier = Modifier
+                .clip (shape = RoundedCornerShape(10.dp))
                 .requiredWidth(296.dp)
                 .requiredHeight(120.dp)
                 .background(color = Color(0xFFFDFAE4))
-                .clip (shape = RoundedCornerShape(10.dp))
             ){
+                Column (
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .padding(horizontal = 10.dp)
+                ){
+                    Text(
+                        text = "Tugas Baru",
+                        color = Color(0xFF337557),
+                        style = TextStyle(
+                            fontSize = 15.sp),
+                        modifier = Modifier
+                            .padding(top = 5.dp)
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Text(
+                        text = "Tugas 2: Buatlah ringkasan perkenalan kampus serta UMKM format pdf...",
+                        color = Color(0xFF337557),
+                        style = TextStyle(
+                            fontSize = 15.sp),
+                        modifier = Modifier
+                            .padding(top = 5.dp)
+                    )
+                }
+
+            }
+            Spacer(modifier = Modifier.height(20.dp))
+            Box(modifier = Modifier
+                .clip (shape = RoundedCornerShape(10.dp))
+                .requiredWidth(296.dp)
+                .requiredHeight(120.dp)
+                .background(color = Color(0xFFFDFAE4))
+            ){
+                Column (
+                    modifier = Modifier
+                        .padding(horizontal = 10.dp)
+                ){
+                    Text(
+                        text = "Absensi baru telah dibuat",
+                        color = Color(0xFF337557),
+                        style = TextStyle(
+                            fontSize = 15.sp),
+                        modifier = Modifier
+                            .align(Alignment.CenterHorizontally)
+                            .padding(top = 5.dp)
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Text(
+                        text = "Absensi Bakti berhasil dibuat ",
+                        color = Color(0xFF337557),
+                        style = TextStyle(
+                            fontSize = 15.sp),
+                        modifier = Modifier
+                            .align(Alignment.Start)
+                            .padding(top = 5.dp)
+                    )
+                }
 
             }
 
