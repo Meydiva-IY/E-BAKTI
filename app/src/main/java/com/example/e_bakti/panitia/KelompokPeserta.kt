@@ -1,30 +1,32 @@
 package com.example.e_bakti.panitia
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredHeight
+import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.e_bakti.R
 
 @Composable
 fun KelompokPeserta(navController: NavController, modifier: Modifier = Modifier) {
@@ -58,71 +60,7 @@ fun KelompokPeserta(navController: NavController, modifier: Modifier = Modifier)
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ){
-            Button(
-                onClick = {
 
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffdfae4)),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .requiredHeight(40.dp),
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-                    Text(
-                        text = "Cari Periode",
-                        color = Color(0xff337557),
-                        style = TextStyle(
-                            fontSize = 15.sp),
-                        modifier = Modifier
-                    )
-                    Spacer(modifier = Modifier.weight(1f))
-                    Image(
-                        painter = painterResource(id = R.drawable.searchicon),
-                        contentDescription = "Data Peserta Bakti ",
-                        modifier = Modifier
-                            .size(15.dp)
-                    )
-                }
-            }
-
-            Spacer(modifier = Modifier.height(15.dp))
-            Button(
-                onClick = {
-
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffdfae4)),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .requiredHeight(40.dp),
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                ) {
-                    Text(
-                        text = "Pilih kelompok",
-                        color = Color(0xff337557),
-                        style = TextStyle(
-                            fontSize = 15.sp),
-                        modifier = Modifier
-                    )
-                    Spacer(modifier = Modifier.weight(1f))
-                    Image(
-                        painter = painterResource(id = R.drawable.chevronleft),
-                        contentDescription = "Data Peserta Bakti ",
-                        modifier = Modifier
-                            .size(15.dp)
-                            .rotate(-90f)
-                    )
-                }
-            }
 
 
         }
@@ -135,6 +73,35 @@ fun KelompokPeserta(navController: NavController, modifier: Modifier = Modifier)
             horizontalAlignment = Alignment.CenterHorizontally,
 
             ){
+            Button(
+                onClick = {
+                    // Tindakan saat tombol ditekan
+                },
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xff009B4A)),
+                modifier = Modifier
+                    .padding(horizontal = outerPadding)
+                    .requiredHeight(45.dp)
+                    .requiredWidth(76.dp)
+                    .align(Alignment.End),
+                shape = RoundedCornerShape(8.dp)
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center,
+                    modifier = Modifier.fillMaxWidth() // Mengisi lebar tombol
+                ) {
+                    Text(
+                        text = "+ Peserta",
+                        style = TextStyle(
+                            fontSize = 10.sp,
+                            textAlign = TextAlign.Center // Menyelaraskan teks di tengah
+                        ),
+                        maxLines = 2, // Mengizinkan hingga 2 baris
+                        overflow = TextOverflow.Ellipsis // Menambahkan elipsis jika teks terlalu panjang
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(20.dp))
             Navigation(navController, modifier = Modifier)
         }
 
