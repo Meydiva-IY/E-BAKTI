@@ -1,8 +1,8 @@
-package com.example.e_bakti.panitia
+package com.example.e_bakti
 
-import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -21,17 +21,19 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.e_bakti.R
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen() {
-    var email by remember { mutableStateOf("") }
+fun LoginScreen(navController: NavController) {
+    var phoneNumber by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .background(color = Color.White)
     ) {
         Image(
             painter = painterResource(id = R.drawable.bakti),
@@ -40,17 +42,19 @@ fun LoginScreen() {
                 .fillMaxWidth(),
             contentScale = ContentScale.Crop
         )
-        Column (
+        Column(
             horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Bottom,
             modifier = Modifier
+                .fillMaxWidth()
                 .clip(RoundedCornerShape(25.dp))
-                .padding(top = 280.dp)
-                .fillMaxSize()
-                .background(Color.White)
-        ){
+                .background(color = Color.White)
+                .requiredHeight(600.dp)
+                .align(Alignment.BottomCenter)
+        ) {
             Image(
                 painter = painterResource(id = R.drawable.logo),
-                contentDescription = "Header Image",
+                contentDescription = "Logo",
                 modifier = Modifier
                     .padding(top = 15.dp)
                     .requiredWidth(86.dp)
@@ -61,16 +65,18 @@ fun LoginScreen() {
                     withStyle(style = SpanStyle(color = Color(0xFF009B4A))) {
                         append("Log in")
                     }
-                    append(" to your account.")},
+                    append(" to your account.")
+                },
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(top = 16.dp)
-                )
-            Column (modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 30.dp, vertical = 30.dp),
+            )
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 30.dp, vertical = 30.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
-            ){
+            ) {
                 Spacer(modifier = Modifier.height(30.dp))
                 Text(
                     text = "Phone Number",
@@ -82,8 +88,8 @@ fun LoginScreen() {
                         .align(Alignment.Start)
                 )
                 OutlinedTextField(
-                    value = email,
-                    onValueChange = { email = it },
+                    value = phoneNumber,
+                    onValueChange = { phoneNumber = it },
                     label = { Text(text = "Phone Number") },
                     singleLine = true,
                     modifier = Modifier
@@ -116,8 +122,7 @@ fun LoginScreen() {
                     )
                 )
                 Spacer(modifier = Modifier.height(15.dp))
-                Row (horizontalArrangement = Arrangement.Center
-                ){
+                Row(horizontalArrangement = Arrangement.Center) {
                     Text(
                         text = "Register",
                         color = Color.Black,
@@ -125,6 +130,7 @@ fun LoginScreen() {
                             fontSize = 15.sp
                         ),
                         modifier = Modifier
+                            .clickable { navController.navigate("register") } // Navigate to RegisterPeserta
                     )
                     Spacer(modifier = Modifier.weight(1f))
                     Text(
@@ -134,31 +140,28 @@ fun LoginScreen() {
                             fontSize = 15.sp
                         ),
                         modifier = Modifier
+                            .clickable { navController.navigate("forgotPass") } // Navigate to LupaPassword Page
                     )
                 }
                 Spacer(modifier = Modifier.height(25.dp))
                 Button(
                     onClick = {
-
+                        // Handle login logic here
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF009B4A)),
                     modifier = Modifier
                         .requiredWidth(154.5.dp)
-                        .requiredHeight(40.dp),
+                        .requiredHeight(40.dp)
+                        .align(Alignment.CenterHorizontally),
                     shape = RoundedCornerShape(8.dp)
                 ) {
-                    Column() {
-                        Text(
-                            text = "Login",
-                            color = Color.Black,
-                            style = TextStyle(
-                                fontSize = 15.sp
-                            )
-                        )
-                    }
+                    Text(
+                        text = "Login",
+                        color = Color.White,
+                        style = TextStyle(fontSize = 15.sp)
+                    )
                 }
             }
-
         }
         Image(
             painter = painterResource(id = R.drawable.footerlogin),
@@ -170,12 +173,12 @@ fun LoginScreen() {
             contentScale = ContentScale.Crop
         )
     }
-
-
 }
 
 @Preview(showBackground = true)
 @Composable
 fun LoginScreenPreview() {
-    LoginScreen()
+    // Provide a mock NavController for preview
+    val navController = rememberNavController()
+    LoginScreen(navController)
 }

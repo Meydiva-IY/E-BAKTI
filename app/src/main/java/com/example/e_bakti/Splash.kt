@@ -65,9 +65,9 @@ fun SplashScreen(navController: NavController, modifier: Modifier = Modifier) {
                 .requiredWidth(width = 109.dp)
         )
     }
-    // Delay selama 2 detik sebelum pindah ke LoginScreen
+    // Delay selama 1 detik sebelum pindah ke LoginScreen
     LaunchedEffect(Unit) {
-        delay(2000)
+        delay(1000)
         navController.navigate("login") { // Pindah ke LoginScreen
             popUpTo("splash") { inclusive = true } // Menghapus splash dari stack
         }

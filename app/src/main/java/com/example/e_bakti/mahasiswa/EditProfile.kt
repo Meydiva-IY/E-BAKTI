@@ -1,4 +1,4 @@
-package com.example.e_bakti
+package com.example.e_bakti.mahasiswa
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -17,11 +17,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.e_bakti.R
 import com.example.e_bakti.panitia.Navigation
 
 
 @Composable
-fun ProfileScreen(navController: NavController) {
+fun EditProfileScreen(navController: NavController) {
     var inputText by remember { mutableStateOf("") }
 
     Box(
@@ -97,7 +98,7 @@ fun ProfileScreen(navController: NavController) {
                         style = TextStyle(
                             fontSize = 14.sp)
                     )
-                        },
+                },
                 singleLine = true,
                 shape = RoundedCornerShape(16.dp)
             )
@@ -196,11 +197,21 @@ fun ProfileScreen(navController: NavController) {
                 value = inputText,
                 onValueChange = { inputText = it },
                 label = {
-                    Text(
-                        text = "Alamat",
-                        style = TextStyle(
-                            fontSize = 14.sp)
-                    )
+                    Row {
+                        Text(
+                            text = "Alamat",
+                            style = TextStyle(
+                                fontSize = 14.sp)
+                        )
+                        Spacer(modifier = Modifier.weight(1f))
+                        Image(
+                            painter = painterResource(R.drawable.editlogo),
+                            contentDescription = "Avatar",
+                            modifier = Modifier
+                                .requiredHeight(16.dp)
+                                .requiredWidth(16.dp)
+                        )
+                    }
                 },
                 singleLine = true,
                 shape = RoundedCornerShape(16.dp)
@@ -221,12 +232,23 @@ fun ProfileScreen(navController: NavController) {
                     .fillMaxWidth(),
                 value = inputText,
                 onValueChange = { inputText = it },
-                label = {
-                    Text(
-                        text = "Nomor Handphone",
-                        style = TextStyle(
-                            fontSize = 14.sp)
+                label =
+                {
+                    Row {
+                        Text(
+                            text = "Alamat",
+                            style = TextStyle(
+                                fontSize = 14.sp)
                     )
+                        Spacer(modifier = Modifier.weight(1f))
+                        Image(
+                            painter = painterResource(R.drawable.editlogo),
+                            contentDescription = "Avatar",
+                            modifier = Modifier
+                                .requiredHeight(16.dp)
+                                .requiredWidth(16.dp)
+                        )
+                    }
                 },
                 singleLine = true,
                 shape = RoundedCornerShape(16.dp)
@@ -245,13 +267,13 @@ fun ProfileScreen(navController: NavController) {
                 Column()
                 {
                     Text(
-                    text = "Edit Profile",
-                    color = Color.White,
-                    style = TextStyle(
-                        fontSize = 15.sp
+                        text = "Edit Profile",
+                        color = Color.White,
+                        style = TextStyle(
+                            fontSize = 15.sp
+                        )
                     )
-                )
-            }
+                }
 
             }
 
@@ -274,8 +296,8 @@ fun ProfileScreen(navController: NavController) {
 
 @Preview(showBackground = true)
 @Composable
-fun ProfileScreenPreview() {
+fun EditProfileScreenPreview() {
     val navController = rememberNavController()
-    ProfileScreen(navController = navController)
+    EditProfileScreen (navController = navController)
 }
 
