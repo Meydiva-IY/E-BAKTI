@@ -1,6 +1,7 @@
-package com.example.e_bakti.panitia
+package com.example.e_bakti.panitia.kelompokpeserta
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,10 +31,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import android.app.DatePickerDialog
+import androidx.compose.ui.platform.LocalContext
+import com.example.e_bakti.panitia.Navigation
+import java.util.*
 
 @Composable
-fun TambahPeriodeKelompokPeserta(navController: NavController, modifier: Modifier = Modifier) {
+fun TambahPesertaBaru(navController: NavController, modifier: Modifier = Modifier) {
     val outerPadding = 32.dp
+    val context = LocalContext.current
+    var selectedDate by remember { mutableStateOf("") }
     var inputText by remember { mutableStateOf("") }
 
     Box(
@@ -75,7 +82,7 @@ fun TambahPeriodeKelompokPeserta(navController: NavController, modifier: Modifie
             )
             Spacer(modifier = Modifier.height(20.dp))
             Text(
-                text = "Periode",
+                text = "Full Name",
                 color = Color(0xFF009B4A),
                 style = TextStyle(
                     fontSize = 15.sp
@@ -91,7 +98,7 @@ fun TambahPeriodeKelompokPeserta(navController: NavController, modifier: Modifie
                 onValueChange = { inputText = it },
                 label = {
                     Text(
-                        text = "Masukkan Nama Periode",
+                        text = "Masukkan Nama",
                         style = TextStyle(
                             fontSize = 14.sp)
                     )
@@ -101,7 +108,53 @@ fun TambahPeriodeKelompokPeserta(navController: NavController, modifier: Modifie
             )
             Spacer(modifier = Modifier.height(20.dp))
             Text(
-                text = "Start Periode",
+                text = "Date of Birth",
+                color = Color(0xFF009B4A),
+                style = TextStyle(
+                    fontSize = 15.sp
+                ),
+                modifier = Modifier
+                    .align(Alignment.Start)
+            )
+            OutlinedTextField(
+                modifier = Modifier
+                    .requiredHeight(40.dp)
+                    .fillMaxWidth()
+                    .clickable {
+                        val calendar = Calendar.getInstance()
+                        val year = calendar.get(Calendar.YEAR)
+                        val month = calendar.get(Calendar.MONTH)
+                        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+                        // Tampilkan DatePickerDialog
+                        DatePickerDialog(
+                            context,
+                            { _, selectedYear, selectedMonth, selectedDay ->
+                                val date = "$selectedDay/${selectedMonth + 1}/$selectedYear" // Format tanggal
+                                selectedDate = date // Perbarui state tanggal yang dipilih
+                            },
+                            year,
+                            month,
+                            day
+                        ).show()
+                    },
+                value = selectedDate, // Tampilkan tanggal yang dipilih
+                onValueChange = { },
+                label = {
+                    Text(
+                        text = "Tanggal/Bulan/Tahun",
+                        style = TextStyle(
+                            fontSize = 14.sp
+                        )
+                    )
+                },
+                enabled = false, // Nonaktifkan input manual
+                singleLine = true,
+                shape = RoundedCornerShape(16.dp)
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            Text(
+                text = "Gender",
                 color = Color(0xFF009B4A),
                 style = TextStyle(
                     fontSize = 15.sp
@@ -117,7 +170,7 @@ fun TambahPeriodeKelompokPeserta(navController: NavController, modifier: Modifie
                 onValueChange = { inputText = it },
                 label = {
                     Text(
-                        text = "Masukkan Periode",
+                        text = "Laki/Perempuan",
                         style = TextStyle(
                             fontSize = 14.sp)
                     )
@@ -127,7 +180,7 @@ fun TambahPeriodeKelompokPeserta(navController: NavController, modifier: Modifie
             )
             Spacer(modifier = Modifier.height(20.dp))
             Text(
-                text = "End Periode",
+                text = "Address",
                 color = Color(0xFF009B4A),
                 style = TextStyle(
                     fontSize = 15.sp
@@ -143,7 +196,7 @@ fun TambahPeriodeKelompokPeserta(navController: NavController, modifier: Modifie
                 onValueChange = { inputText = it },
                 label = {
                     Text(
-                        text = "Masukkan Periode",
+                        text = "Alamat",
                         style = TextStyle(
                             fontSize = 14.sp)
                     )
@@ -151,16 +204,85 @@ fun TambahPeriodeKelompokPeserta(navController: NavController, modifier: Modifie
                 singleLine = true,
                 shape = RoundedCornerShape(16.dp)
             )
-        }
-
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.Bottom,
-            horizontalAlignment = Alignment.CenterHorizontally,
-
-            ){
+            Spacer(modifier = Modifier.height(20.dp))
+            Text(
+                text = "Email",
+                color = Color(0xFF009B4A),
+                style = TextStyle(
+                    fontSize = 15.sp
+                ),
+                modifier = Modifier
+                    .align(Alignment.Start)
+            )
+            OutlinedTextField(
+                modifier = Modifier
+                    .requiredHeight(40.dp)
+                    .fillMaxWidth(),
+                value = inputText,
+                onValueChange = { inputText = it },
+                label = {
+                    Text(
+                        text = "Masukkan Email",
+                        style = TextStyle(
+                            fontSize = 14.sp)
+                    )
+                },
+                singleLine = true,
+                shape = RoundedCornerShape(16.dp)
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            Text(
+                text = "Student ID",
+                color = Color(0xFF009B4A),
+                style = TextStyle(
+                    fontSize = 15.sp
+                ),
+                modifier = Modifier
+                    .align(Alignment.Start)
+            )
+            OutlinedTextField(
+                modifier = Modifier
+                    .requiredHeight(40.dp)
+                    .fillMaxWidth(),
+                value = inputText,
+                onValueChange = { inputText = it },
+                label = {
+                    Text(
+                        text = "Masukkan NIM",
+                        style = TextStyle(
+                            fontSize = 14.sp)
+                    )
+                },
+                singleLine = true,
+                shape = RoundedCornerShape(16.dp)
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            Text(
+                text = "Departement",
+                color = Color(0xFF009B4A),
+                style = TextStyle(
+                    fontSize = 15.sp
+                ),
+                modifier = Modifier
+                    .align(Alignment.Start)
+            )
+            OutlinedTextField(
+                modifier = Modifier
+                    .requiredHeight(40.dp)
+                    .fillMaxWidth(),
+                value = inputText,
+                onValueChange = { inputText = it },
+                label = {
+                    Text(
+                        text = "Masukkan Departemen",
+                        style = TextStyle(
+                            fontSize = 14.sp)
+                    )
+                },
+                singleLine = true,
+                shape = RoundedCornerShape(16.dp)
+            )
+            Spacer(modifier = Modifier.height(25.dp))
             Button(
                 onClick = {
 
@@ -178,7 +300,16 @@ fun TambahPeriodeKelompokPeserta(navController: NavController, modifier: Modifie
                 )
 
             }
-            Spacer (modifier = Modifier.height(50.dp))
+        }
+
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.CenterHorizontally,
+
+            ){
             Navigation(navController, modifier = Modifier)
 
         }
@@ -187,9 +318,11 @@ fun TambahPeriodeKelompokPeserta(navController: NavController, modifier: Modifie
 }
 
 
+
+
 @Preview(widthDp = 360, heightDp = 800)
 @Composable
-private fun TambahPeriodeKelompokPesertaPreview() {
+private fun TambahPesertaBaruPreview() {
     val navController = rememberNavController()
-    TambahPeriodeKelompokPeserta(navController = navController)
+    TambahPesertaBaru(navController = navController)
 }

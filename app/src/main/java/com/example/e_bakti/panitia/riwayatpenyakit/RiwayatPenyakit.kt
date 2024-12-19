@@ -1,4 +1,4 @@
-package com.example.e_bakti.panitia
+package com.example.e_bakti.panitia.riwayatpenyakit
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -12,18 +12,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
-import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -35,11 +29,11 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.e_bakti.R
+import com.example.e_bakti.panitia.Navigation
 
 @Composable
-fun PengelolaanAbsen(navController: NavController, modifier: Modifier = Modifier) {
+fun RiwayatPenyakit(navController: NavController, modifier: Modifier = Modifier) {
     val outerPadding = 32.dp
-    var inputText by remember { mutableStateOf("") }
 
     Box(
         modifier = modifier
@@ -53,7 +47,7 @@ fun PengelolaanAbsen(navController: NavController, modifier: Modifier = Modifier
             verticalArrangement = Arrangement.Center
         ){
             Text(
-                text = "PENGELOLAAN ABSEN",
+                text = "RIWAYAT PENYAKIT",
                 color = Color.White,
                 style = TextStyle(
                     fontSize = 25.sp),
@@ -99,51 +93,6 @@ fun PengelolaanAbsen(navController: NavController, modifier: Modifier = Modifier
                             .size(15.dp)
                     )
                 }
-            }
-            Spacer(modifier = Modifier.height(15.dp))
-            Row (verticalAlignment = Alignment.CenterVertically
-            ){
-                Text(
-                    text = "Nama :",
-                    color = Color(0xff337557),
-                    style = TextStyle(
-                        fontSize = 15.sp),
-                    modifier = Modifier
-                )
-                Spacer(modifier = Modifier.weight(1f))
-                OutlinedTextField(
-                    modifier = Modifier
-                        .background(color = Color(0xffFDFAE4))
-                        .requiredHeight(30.dp)
-                        .requiredWidth(150.dp),
-                    value = inputText,
-                    onValueChange = { inputText = it },
-                    label = {
-                        Text(
-                            text = "Name",
-                            style = TextStyle(
-                                fontSize = 10.sp)
-                        )
-                    }
-                )
-                Button(
-                    onClick = {
-
-                    },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xff009B4A)),
-                    modifier = Modifier
-                        .requiredWidth(31.dp)
-                        .requiredHeight(23.dp),
-                    shape = RoundedCornerShape(8.dp)
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.searchicon),
-                        contentDescription = "Data Peserta Bakti ",
-                        modifier = Modifier
-                            .fillMaxSize()
-                    )
-                }
-
             }
             Spacer(modifier = Modifier.height(50.dp))
             Button(
@@ -280,10 +229,6 @@ fun PengelolaanAbsen(navController: NavController, modifier: Modifier = Modifier
             }
 
 
-
-
-
-
         }
 
 
@@ -303,7 +248,7 @@ fun PengelolaanAbsen(navController: NavController, modifier: Modifier = Modifier
 
 @Preview(widthDp = 360, heightDp = 800)
 @Composable
-private fun PengelolaanAbsenPreview() {
+private fun RiwayatPenyakitPreview() {
     val navController = rememberNavController()
-    PengelolaanAbsen(navController = navController)
+    RiwayatPenyakit(navController = navController)
 }

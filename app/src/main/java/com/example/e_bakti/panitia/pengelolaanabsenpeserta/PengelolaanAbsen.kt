@@ -1,4 +1,4 @@
-package com.example.e_bakti.panitia
+package com.example.e_bakti.panitia.pengelolaanabsenpeserta
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -7,17 +7,25 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
+import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,10 +37,12 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.e_bakti.R
+import com.example.e_bakti.panitia.Navigation
 
 @Composable
-fun RiwayatPenyakit(navController: NavController, modifier: Modifier = Modifier) {
+fun PengelolaanAbsen(navController: NavController, modifier: Modifier = Modifier) {
     val outerPadding = 32.dp
+    var inputText by remember { mutableStateOf("") }
 
     Box(
         modifier = modifier
@@ -46,7 +56,7 @@ fun RiwayatPenyakit(navController: NavController, modifier: Modifier = Modifier)
             verticalArrangement = Arrangement.Center
         ){
             Text(
-                text = "RIWAYAT PENYAKIT",
+                text = "PENGELOLAAN ABSEN",
                 color = Color.White,
                 style = TextStyle(
                     fontSize = 25.sp),
@@ -92,6 +102,66 @@ fun RiwayatPenyakit(navController: NavController, modifier: Modifier = Modifier)
                             .size(15.dp)
                     )
                 }
+            }
+            Spacer(modifier = Modifier.height(15.dp))
+            Row (verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center,
+                modifier = Modifier
+                    .requiredHeight(30.dp)
+            ){
+                Text(
+                    text = "Nama :",
+                    color = Color(0xff337557),
+                    style = TextStyle(
+                        fontSize = 15.sp),
+                    modifier = Modifier
+                )
+                Spacer(modifier = Modifier.weight(4F))
+                OutlinedTextField(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .requiredWidth(150.dp),
+                    value = inputText,
+                    onValueChange = { inputText = it },
+                    label = {
+                        Column(modifier = Modifier
+                            .requiredHeight(20.dp)
+                            .requiredWidth(150.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Text(
+                                text = "Name",
+                                style = TextStyle(
+                                    fontSize = 10.sp)
+                            )
+                        }
+                    }
+                )
+                Spacer(modifier = Modifier.width(5.dp))
+                Button(
+                    onClick = {
+
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xff009B4A)),
+                    modifier = Modifier
+                        .requiredWidth(30.dp)
+                        .fillMaxHeight(),
+                    shape = RoundedCornerShape(8.dp)
+                ) {
+                    Column (modifier = Modifier.fillMaxSize()
+
+                    ){
+
+                        Image(
+                            painter = painterResource(id = R.drawable.searchicon),
+                            contentDescription = "Data Peserta Bakti ",
+                            modifier = Modifier
+                                .fillMaxSize()
+                        )
+                    }
+                }
+
             }
             Spacer(modifier = Modifier.height(50.dp))
             Button(
@@ -228,6 +298,10 @@ fun RiwayatPenyakit(navController: NavController, modifier: Modifier = Modifier)
             }
 
 
+
+
+
+
         }
 
 
@@ -247,7 +321,7 @@ fun RiwayatPenyakit(navController: NavController, modifier: Modifier = Modifier)
 
 @Preview(widthDp = 360, heightDp = 800)
 @Composable
-private fun RiwayatPenyakitPreview() {
+private fun PengelolaanAbsenPreview() {
     val navController = rememberNavController()
-    RiwayatPenyakit(navController = navController)
+    PengelolaanAbsen(navController = navController)
 }
