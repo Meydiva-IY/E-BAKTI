@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -101,7 +103,10 @@ fun PengelolaanAbsen(navController: NavController, modifier: Modifier = Modifier
                 }
             }
             Spacer(modifier = Modifier.height(15.dp))
-            Row (verticalAlignment = Alignment.CenterVertically
+            Row (verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center,
+                modifier = Modifier
+                    .requiredHeight(30.dp)
             ){
                 Text(
                     text = "Nama :",
@@ -110,38 +115,50 @@ fun PengelolaanAbsen(navController: NavController, modifier: Modifier = Modifier
                         fontSize = 15.sp),
                     modifier = Modifier
                 )
-                Spacer(modifier = Modifier.weight(1f))
+                Spacer(modifier = Modifier.weight(4F))
                 OutlinedTextField(
                     modifier = Modifier
-                        .background(color = Color(0xffFDFAE4))
-                        .requiredHeight(30.dp)
+                        .fillMaxHeight()
                         .requiredWidth(150.dp),
                     value = inputText,
                     onValueChange = { inputText = it },
                     label = {
-                        Text(
-                            text = "Name",
-                            style = TextStyle(
-                                fontSize = 10.sp)
-                        )
+                        Column(modifier = Modifier
+                            .requiredHeight(20.dp)
+                            .requiredWidth(150.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Text(
+                                text = "Name",
+                                style = TextStyle(
+                                    fontSize = 10.sp)
+                            )
+                        }
                     }
                 )
+                Spacer(modifier = Modifier.width(5.dp))
                 Button(
                     onClick = {
 
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xff009B4A)),
                     modifier = Modifier
-                        .requiredWidth(31.dp)
-                        .requiredHeight(23.dp),
+                        .requiredWidth(30.dp)
+                        .fillMaxHeight(),
                     shape = RoundedCornerShape(8.dp)
                 ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.searchicon),
-                        contentDescription = "Data Peserta Bakti ",
-                        modifier = Modifier
-                            .fillMaxSize()
-                    )
+                    Column (modifier = Modifier.fillMaxSize()
+
+                    ){
+
+                        Image(
+                            painter = painterResource(id = R.drawable.searchicon),
+                            contentDescription = "Data Peserta Bakti ",
+                            modifier = Modifier
+                                .fillMaxSize()
+                        )
+                    }
                 }
 
             }

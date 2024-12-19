@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredWidth
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -58,270 +59,304 @@ fun PengelolaanChallenge(navController: NavController, modifier: Modifier = Modi
         }
         Column(
             modifier = Modifier
-                .padding(horizontal = outerPadding)
                 .padding(top = 100.dp)
                 .fillMaxSize(),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ){
-            Button(
-                onClick = {
 
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffdfae4)),
+            Spacer(modifier = Modifier.height(20.dp))
+            Box(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .requiredHeight(56.dp),
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .fillMaxWidth()
+                    .clip (shape = RoundedCornerShape(20.dp))
+                    .background(color = Color(0xffFDFAE4))
+
+            ){
+                Column(modifier = Modifier
+                    .padding(horizontal = 10.dp)
+                    .padding(top = 10.dp, bottom = 30.dp)
                 ) {
                     Text(
-                        text = "+     ",
-                        color = Color(0xff337557),
+                        text = "Challange 1",
                         style = TextStyle(
-                            fontSize = 30.sp),
-                        modifier = Modifier
+                            fontSize = 20.sp
+                        )
                     )
+                    Spacer(modifier = Modifier.height(15.dp))
+                    Row(
+
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.fluentcolorbuildingpeople16),
+                            contentDescription = "Data Peserta Bakti ",
+                            modifier = Modifier
+                                .requiredWidth(80.dp)
+                                .requiredHeight(80.dp)
+                        )
+                        Spacer(modifier = Modifier.width(15.dp))
+                        Column(modifier = Modifier
+                            .requiredWidth(130.dp)
+                            .requiredHeight(80.dp)
+
+                        ) {
+                            Text(
+                                text = "Judul Challange 1",
+                                style = TextStyle(
+                                    fontSize = 18.sp
+                                ),
+                                maxLines = 2
+                            )
+                            Spacer(modifier = Modifier.weight(1f))
+                            Text(
+                                text = "Deskripsi Tugas lawekralwkrmalkwer",
+                                style = TextStyle(
+                                    fontSize = 13.sp
+                                ),
+                                maxLines = 3,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                        }
+                        Spacer(modifier = Modifier.weight(1f))
+                        Column(modifier = Modifier.requiredHeight(80.dp)) {
+                            Button(
+                                onClick = {
+
+                                },
+                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xff009B4A)),
+                                modifier = Modifier
+                                    .requiredWidth(100.dp)
+                                    .requiredHeight(35.dp),
+                                shape = RoundedCornerShape(8.dp)
+                            ) {
+                                Text(
+                                    text = "Edit",
+                                    style = TextStyle(
+                                        fontSize = 12.sp),
+                                    color = Color.Black
+                                )
+                            }
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Button(
+                                onClick = {
+
+                                },
+                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xff009B4A)),
+                                modifier = Modifier
+                                    .requiredWidth(100.dp)
+                                    .requiredHeight(35.dp),
+                                shape = RoundedCornerShape(8.dp)
+                            ) {
+                                Text(
+                                    text = "Hapus",
+                                    style = TextStyle(
+                                        fontSize = 12.sp),
+                                    color = Color.Black
+                                )
+                            }
+
+                        }
+
+
+                    }
+                }
+
+            }
+            Spacer(modifier = Modifier.height(10.dp))
+            Box(
+                modifier = Modifier
+                    .clip (shape = RoundedCornerShape(20.dp))
+                    .background(color = Color(0xffFDFAE4))
+
+            ){
+                Column(modifier = Modifier
+                    .padding(horizontal = 10.dp)
+                    .padding(top = 10.dp, bottom = 30.dp)
+                ) {
                     Text(
-                        text = "CHALLENGE BARU",
-                        color = Color(0xff337557),
+                        text = "Challange 1",
                         style = TextStyle(
-                            fontSize = 20.sp)
+                            fontSize = 20.sp
+                        )
                     )
+                    Spacer(modifier = Modifier.height(15.dp))
+                    Row(
+
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.fluentcolorbuildingpeople16),
+                            contentDescription = "Data Peserta Bakti ",
+                            modifier = Modifier
+                                .requiredWidth(80.dp)
+                                .requiredHeight(80.dp)
+                        )
+                        Spacer(modifier = Modifier.width(15.dp))
+                        Column(modifier = Modifier
+                            .requiredWidth(130.dp)
+                            .requiredHeight(80.dp)
+
+                        ) {
+                            Text(
+                                text = "Judul Challange 1",
+                                style = TextStyle(
+                                    fontSize = 18.sp
+                                ),
+                                maxLines = 2
+                            )
+                            Spacer(modifier = Modifier.weight(1f))
+                            Text(
+                                text = "Deskripsi Tugas lawekralwkrmalkwer",
+                                style = TextStyle(
+                                    fontSize = 13.sp
+                                ),
+                                maxLines = 3,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                        }
+                        Spacer(modifier = Modifier.weight(1f))
+                        Column(modifier = Modifier.requiredHeight(80.dp)) {
+                            Button(
+                                onClick = {
+
+                                },
+                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xff009B4A)),
+                                modifier = Modifier
+                                    .requiredWidth(100.dp)
+                                    .requiredHeight(35.dp),
+                                shape = RoundedCornerShape(8.dp)
+                            ) {
+                                Text(
+                                    text = "Edit",
+                                    style = TextStyle(
+                                        fontSize = 12.sp),
+                                    color = Color.Black
+                                )
+                            }
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Button(
+                                onClick = {
+
+                                },
+                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xff009B4A)),
+                                modifier = Modifier
+                                    .requiredWidth(100.dp)
+                                    .requiredHeight(35.dp),
+                                shape = RoundedCornerShape(8.dp)
+                            ) {
+                                Text(
+                                    text = "Hapus",
+                                    style = TextStyle(
+                                        fontSize = 12.sp),
+                                    color = Color.Black
+                                )
+                            }
+
+                        }
+
+
+                    }
                 }
+
             }
-        }
-        Box(modifier = Modifier
-            .requiredWidth(360.dp)
-            .requiredHeight(600.dp)
-            .clip(shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
-            .background(color = Color(0xfffdfae4))
-            .align(Alignment.BottomCenter)
-        ){
-            Column(modifier = Modifier
-                .padding(horizontal = 10.dp, vertical = 30.dp)
-            ) {
-                Text(
-                    text = "Challange 1",
-                    style = TextStyle(
-                        fontSize = 20.sp
-                    )
-                )
-                Spacer(modifier = Modifier.height(15.dp))
-                Row (
+            Spacer(modifier = Modifier.height(10.dp))
+            Box(
+                modifier = Modifier
+                    .clip (shape = RoundedCornerShape(20.dp))
+                    .background(color = Color(0xffFDFAE4))
 
-                ){
-                    Image(
-                        painter = painterResource(id = R.drawable.fluentcolorbuildingpeople16),
-                        contentDescription = "Data Peserta Bakti ",
-                        modifier = Modifier
-                            .requiredWidth(80.dp)
-                            .requiredHeight(80.dp)
+            ){
+                Column(modifier = Modifier
+                    .padding(horizontal = 10.dp)
+                    .padding(top = 10.dp, bottom = 30.dp)
+                ) {
+                    Text(
+                        text = "Challange 1",
+                        style = TextStyle(
+                            fontSize = 20.sp
+                        )
                     )
-                    Spacer(modifier = Modifier.weight(1f))
-                    Column(
+                    Spacer(modifier = Modifier.height(15.dp))
+                    Row(
 
                     ) {
-                        Text(
-                            text = "Judul Challange\n1",
-                            style = TextStyle(
-                                    fontSize = 20.sp
-                                    ),
-                            maxLines = 2
-                        )
-                        Spacer(modifier = Modifier.height(5.dp))
-                        Text(
-                            text = "Deskripsi Tugas...",
-                            style = TextStyle(
-                                fontSize = 12.sp
-                            ),
-                            maxLines = 3,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                    }
-                    Spacer(modifier = Modifier.weight(1f))
-                    Column (modifier = Modifier.requiredHeight(80.dp)){
-                        Button(
-                            onClick = {
-
-                            },
-                            colors = ButtonDefaults.buttonColors(containerColor = Color.White),
+                        Image(
+                            painter = painterResource(id = R.drawable.fluentcolorbuildingpeople16),
+                            contentDescription = "Data Peserta Bakti ",
                             modifier = Modifier
-                                .requiredWidth(100.dp)
-                                .requiredHeight(35.dp),
-                            shape = RoundedCornerShape(8.dp)
-                        ) {
-
-                        }
-                        Spacer(modifier = Modifier.height(10.dp))
-                        Button(
-                            onClick = {
-
-                            },
-                            colors = ButtonDefaults.buttonColors(containerColor = Color.White),
-                            modifier = Modifier
-                                .requiredWidth(100.dp)
-                                .requiredHeight(35.dp),
-                            shape = RoundedCornerShape(8.dp)
-                        ) {
-
-                        }
-
-                    }
-
-
-                }
-                Spacer(modifier = Modifier.height(25.dp))
-                Text(
-                    text = "Challange 1",
-                    style = TextStyle(
-                        fontSize = 20.sp
-                    )
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                Row (
-
-                ){
-                    Image(
-                        painter = painterResource(id = R.drawable.fluentcolorbuildingpeople16),
-                        contentDescription = "Data Peserta Bakti ",
-                        modifier = Modifier
-                            .requiredWidth(80.dp)
+                                .requiredWidth(80.dp)
+                                .requiredHeight(80.dp)
+                        )
+                        Spacer(modifier = Modifier.width(15.dp))
+                        Column(modifier = Modifier
+                            .requiredWidth(130.dp)
                             .requiredHeight(80.dp)
-                    )
-                    Spacer(modifier = Modifier.weight(1f))
-                    Column(
 
-                    ) {
-                        Text(
-                            text = "Judul Challange\n1",
-                            style = TextStyle(
-                                fontSize = 20.sp
-                            ),
-                            maxLines = 2
-                        )
-                        Spacer(modifier = Modifier.height(5.dp))
-                        Text(
-                            text = "Deskripsi Tugas...",
-                            style = TextStyle(
-                                fontSize = 12.sp
-                            ),
-                            maxLines = 3,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                    }
-                    Spacer(modifier = Modifier.weight(1f))
-                    Column (modifier = Modifier.requiredHeight(80.dp)){
-                        Button(
-                            onClick = {
-
-                            },
-                            colors = ButtonDefaults.buttonColors(containerColor = Color.White),
-                            modifier = Modifier
-                                .requiredWidth(100.dp)
-                                .requiredHeight(35.dp),
-                            shape = RoundedCornerShape(8.dp)
                         ) {
+                            Text(
+                                text = "Judul Challange 1",
+                                style = TextStyle(
+                                    fontSize = 18.sp
+                                ),
+                                maxLines = 2
+                            )
+                            Spacer(modifier = Modifier.weight(1f))
+                            Text(
+                                text = "Deskripsi Tugas lawekralwkrmalkwer",
+                                style = TextStyle(
+                                    fontSize = 13.sp
+                                ),
+                                maxLines = 3,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                        }
+                        Spacer(modifier = Modifier.weight(1f))
+                        Column(modifier = Modifier.requiredHeight(80.dp)) {
+                            Button(
+                                onClick = {
+
+                                },
+                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xff009B4A)),
+                                modifier = Modifier
+                                    .requiredWidth(100.dp)
+                                    .requiredHeight(35.dp),
+                                shape = RoundedCornerShape(8.dp)
+                            ) {
+                                Text(
+                                    text = "Edit",
+                                    style = TextStyle(
+                                        fontSize = 12.sp),
+                                    color = Color.Black
+                                )
+                            }
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Button(
+                                onClick = {
+
+                                },
+                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xff009B4A)),
+                                modifier = Modifier
+                                    .requiredWidth(100.dp)
+                                    .requiredHeight(35.dp),
+                                shape = RoundedCornerShape(8.dp)
+                            ) {
+                                Text(
+                                    text = "Hapus",
+                                    style = TextStyle(
+                                        fontSize = 12.sp),
+                                    color = Color.Black
+                                )
+                            }
 
                         }
-                        Spacer(modifier = Modifier.height(10.dp))
-                        Button(
-                            onClick = {
 
-                            },
-                            colors = ButtonDefaults.buttonColors(containerColor = Color.White),
-                            modifier = Modifier
-                                .requiredWidth(100.dp)
-                                .requiredHeight(35.dp),
-                            shape = RoundedCornerShape(8.dp)
-                        ) {
-
-                        }
 
                     }
-
-
                 }
-                Spacer(modifier = Modifier.height(25.dp))
-                Text(
-                    text = "Challange 1",
-                    style = TextStyle(
-                        fontSize = 20.sp
-                    )
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                Row (
-
-                ){
-                    Image(
-                        painter = painterResource(id = R.drawable.fluentcolorbuildingpeople16),
-                        contentDescription = "Data Peserta Bakti ",
-                        modifier = Modifier
-                            .requiredWidth(80.dp)
-                            .requiredHeight(80.dp)
-                    )
-                    Spacer(modifier = Modifier.weight(1f))
-                    Column(
-
-                    ) {
-                        Text(
-                            text = "Judul Challange\n1",
-                            style = TextStyle(
-                                fontSize = 20.sp
-                            ),
-                            maxLines = 2
-                        )
-                        Spacer(modifier = Modifier.height(5.dp))
-                        Text(
-                            text = "Deskripsi Tugas...",
-                            style = TextStyle(
-                                fontSize = 12.sp
-                            ),
-                            maxLines = 3,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                    }
-                    Spacer(modifier = Modifier.weight(1f))
-                    Column (modifier = Modifier.requiredHeight(80.dp)){
-                        Button(
-                            onClick = {
-
-                            },
-                            colors = ButtonDefaults.buttonColors(containerColor = Color.White),
-                            modifier = Modifier
-                                .requiredWidth(100.dp)
-                                .requiredHeight(35.dp),
-                            shape = RoundedCornerShape(8.dp)
-                        ) {
-
-                        }
-                        Spacer(modifier = Modifier.height(10.dp))
-                        Button(
-                            onClick = {
-
-                            },
-                            colors = ButtonDefaults.buttonColors(containerColor = Color.White),
-                            modifier = Modifier
-                                .requiredWidth(100.dp)
-                                .requiredHeight(35.dp),
-                            shape = RoundedCornerShape(8.dp)
-                        ) {
-
-                        }
-
-                    }
-
-
-                }
-
 
             }
 
         }
+
+
 
 
         Column(
@@ -331,6 +366,33 @@ fun PengelolaanChallenge(navController: NavController, modifier: Modifier = Modi
             horizontalAlignment = Alignment.CenterHorizontally,
 
             ){
+            Button(
+                onClick = {
+
+                },
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xff009B4A)),
+                modifier = Modifier
+                    .padding(end = 10.dp)
+                    .requiredWidth(50.dp)
+                    .requiredHeight(50.dp)
+                    .align(Alignment.End)
+            ) {
+                Column (modifier = Modifier
+                    .requiredWidth(50.dp)
+                    .requiredHeight(50.dp),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "+",
+                        style = TextStyle(
+                            fontSize = 20.sp
+                        )
+                    )
+                }
+
+            }
+            Spacer(modifier = Modifier.height(10.dp))
             Navigation(navController, modifier = Modifier)
         }
 

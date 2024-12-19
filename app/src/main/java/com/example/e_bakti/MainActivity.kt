@@ -1,4 +1,4 @@
-package com.example.e_bakti.panitia
+package com.example.e_bakti
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,7 +12,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.e_bakti.SplashScreen
+import com.example.e_bakti.panitia.DetailKelompokPeserta
+import com.example.e_bakti.panitia.HomepagePanitiaBakti
+import com.example.e_bakti.panitia.KelompokPeserta
 import com.example.e_bakti.ui.theme.EBAKTITheme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +24,7 @@ class MainActivity : ComponentActivity() {
             EBAKTITheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background // Pastikan warna latar belakang sesuai
+                    color = MaterialTheme.colorScheme.background
                 ) {
                     AppNavigator()
                 }
@@ -36,9 +38,15 @@ fun AppNavigator() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "splashpage") {
         composable("splashpage") { SplashScreen(navController) }
-        composable("homepage") { HomepagePanitiaBakti(navController) } // Pastikan untuk mengirim navController
-        composable("notifications") { Notifpage(navController) } // Tambahkan rute lain sesuai kebutuhan
-    }
+        composable("login") { LoginScreen(navController) } // Pass navController to LoginScreen
+        composable("register") { RegisterPeserta(navController) } // Added RegisterPeserta route
+        composable("homepagePanitia") { HomepagePanitiaBakti(navController) }
+        composable("notifications") { Notifpage(navController) }
+        composable ("forgotPass") { LupaPasswordPage(navController) }
+        composable("kelompokPeserta") { KelompokPeserta(navController)}
+        composable("detailKelompokPeserta") { DetailKelompokPeserta(navController) }
+
+        }
 }
 
 @Preview(showBackground = true)

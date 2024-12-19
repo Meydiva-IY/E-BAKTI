@@ -44,7 +44,7 @@ fun ChallangeBaru(navController: NavController, modifier: Modifier = Modifier) {
             verticalArrangement = Arrangement.Center
         ){
             Text(
-                text = "RIWAYAT PENYAKIT",
+                text = "CHALLANGE BARU",
                 color = Color.White,
                 style = TextStyle(
                     fontSize = 25.sp),
