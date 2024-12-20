@@ -29,7 +29,7 @@ import androidx.navigation.compose.rememberNavController
 @Composable
 fun RegisterPeserta(navController: NavController) {
     var name by remember { mutableStateOf("") }
-    var phoneNumber by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") } 
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
 
@@ -104,17 +104,17 @@ fun RegisterPeserta(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(30.dp))
 
-                // Phone Number Field
+                // Email Field
                 Text(
-                    text = "Phone Number",
+                    text = "Email", // Mengganti label dari "Phone Number" menjadi "Email"
                     color = Color.Black,
                     style = TextStyle(fontSize = 15.sp),
                     modifier = Modifier.align(Alignment.Start)
                 )
                 OutlinedTextField(
-                    value = phoneNumber,
-                    onValueChange = { phoneNumber = it },
-                    label = { Text(text = "Phone Number") },
+                    value = email, // Mengganti phoneNumber dengan email
+                    onValueChange = { email = it },
+                    label = { Text(text = "Email") }, // Mengganti label menjadi "Email"
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(16.dp),
