@@ -27,7 +27,7 @@ import androidx.navigation.compose.rememberNavController
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(navController: NavController) {
-    var phoneNumber by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") } 
     var password by remember { mutableStateOf("") }
 
     Box(
@@ -79,7 +79,7 @@ fun LoginScreen(navController: NavController) {
             ) {
                 Spacer(modifier = Modifier.height(30.dp))
                 Text(
-                    text = "Phone Number",
+                    text = "Email", 
                     color = Color.Black,
                     style = TextStyle(
                         fontSize = 15.sp
@@ -88,9 +88,9 @@ fun LoginScreen(navController: NavController) {
                         .align(Alignment.Start)
                 )
                 OutlinedTextField(
-                    value = phoneNumber,
-                    onValueChange = { phoneNumber = it },
-                    label = { Text(text = "Phone Number") },
+                    value = email, 
+                    onValueChange = { email = it },
+                    label = { Text(text = "Email") }, 
                     singleLine = true,
                     modifier = Modifier
                         .fillMaxWidth(),

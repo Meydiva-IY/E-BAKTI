@@ -1,323 +1,242 @@
 package com.example.e_bakti.panitia.pengelolaanabsenpeserta
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredHeight
-import androidx.compose.foundation.layout.requiredWidth
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.Group
+import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.e_bakti.R
 import com.example.e_bakti.panitia.Navigation
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PengelolaanAbsen(navController: NavController, modifier: Modifier = Modifier) {
-    val outerPadding = 32.dp
-    var inputText by remember { mutableStateOf("") }
+    var searchQuery by remember { mutableStateOf("") }
+    var selectedPeriode by remember { mutableStateOf("2024") }
+
+    val kelompokList = (1..7).map { "Kelompok $it" }
 
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(color = Color.White)
+            .background(color = Color(0xff009B4A))
     ) {
-        Column (modifier = Modifier
-            .requiredHeight(80.dp)
-            .fillMaxWidth()
-            .background(color = Color(0xFF009B4A)),
-            verticalArrangement = Arrangement.Center
-        ){
-            Text(
-                text = "PENGELOLAAN ABSEN",
-                color = Color.White,
-                style = TextStyle(
-                    fontSize = 25.sp),
+        Box(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            // Header
+            Column(
                 modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-            )
-        }
-        Column(
-            modifier = Modifier
-                .padding(horizontal = outerPadding)
-                .padding(top = 100.dp)
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ){
-            Button(
-                onClick = {
+                    .requiredHeight(80.dp)
+                    .fillMaxWidth(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Pengelolaan Absen",
+                    color = Color.White,
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
 
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffdfae4)),
+            // Main Content
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .requiredHeight(40.dp),
-                shape = RoundedCornerShape(8.dp)
+                    .requiredHeight(680.dp)
+                    .clip(RoundedCornerShape(topStart = 55.dp, topEnd = 55.dp))
+                    .background(color = Color.White)
+                    .align(Alignment.BottomCenter)
             ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
+                Column(
                     modifier = Modifier
-                        .fillMaxWidth()
+                        .fillMaxSize()
+                        .padding(24.dp)
                 ) {
-                    Text(
-                        text = "Cari Periode",
-                        color = Color(0xff337557),
-                        style = TextStyle(
-                            fontSize = 15.sp),
+                    // Periode Selection
+                    Card(
                         modifier = Modifier
-                    )
-                    Spacer(modifier = Modifier.weight(1f))
-                    Image(
-                        painter = painterResource(id = R.drawable.searchicon),
-                        contentDescription = "Data Peserta Bakti ",
-                        modifier = Modifier
-                            .size(15.dp)
-                    )
-                }
-            }
-            Spacer(modifier = Modifier.height(15.dp))
-            Row (verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center,
-                modifier = Modifier
-                    .requiredHeight(30.dp)
-            ){
-                Text(
-                    text = "Nama :",
-                    color = Color(0xff337557),
-                    style = TextStyle(
-                        fontSize = 15.sp),
-                    modifier = Modifier
-                )
-                Spacer(modifier = Modifier.weight(4F))
-                OutlinedTextField(
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .requiredWidth(150.dp),
-                    value = inputText,
-                    onValueChange = { inputText = it },
-                    label = {
-                        Column(modifier = Modifier
-                            .requiredHeight(20.dp)
-                            .requiredWidth(150.dp),
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.Center
+                            .fillMaxWidth()
+                            .padding(bottom = 16.dp),
+                        colors = CardDefaults.cardColors(
+                            containerColor = Color(0xFFE8F5E9)
+                        ),
+                        elevation = CardDefaults.cardElevation(
+                            defaultElevation = 2.dp
+                        )
+                    ) {
+                        Column(
+                            modifier = Modifier.padding(16.dp)
                         ) {
                             Text(
-                                text = "Name",
+                                text = "Pilih Periode",
                                 style = TextStyle(
-                                    fontSize = 10.sp)
+                                    fontSize = 16.sp,
+                                    fontWeight = FontWeight.Medium,
+                                    color = Color(0xFF009B4A)
+                                ),
+                                modifier = Modifier.padding(bottom = 8.dp)
+                            )
+                            var expanded by remember { mutableStateOf(false) }
+                            ExposedDropdownMenuBox(
+                                expanded = expanded,
+                                onExpandedChange = { expanded = it },
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                OutlinedTextField(
+                                    value = selectedPeriode,
+                                    onValueChange = {},
+                                    readOnly = true,
+                                    trailingIcon = {
+                                        ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
+                                    },
+                                    colors = OutlinedTextFieldDefaults.colors(
+                                        focusedBorderColor = Color(0xFF009B4A),
+                                        unfocusedBorderColor = Color(0xFF009B4A)
+                                    ),
+                                    modifier = Modifier
+                                        .menuAnchor()
+                                        .fillMaxWidth()
+                                )
+                                ExposedDropdownMenu(
+                                    expanded = expanded,
+                                    onDismissRequest = { expanded = false }
+                                ) {
+                                    listOf("2024", "2023", "2022").forEach { periode ->
+                                        DropdownMenuItem(
+                                            text = { Text(periode) },
+                                            onClick = {
+                                                selectedPeriode = periode
+                                                expanded = false
+                                            }
+                                        )
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // Search Field
+                    OutlinedTextField(
+                        value = searchQuery,
+                        onValueChange = { searchQuery = it },
+                        placeholder = { Text("Cari kelompok...") },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 16.dp),
+                        leadingIcon = {
+                            Icon(
+                                Icons.Default.Search,
+                                contentDescription = "Search",
+                                tint = Color(0xFF009B4A)
+                            )
+                        },
+                        shape = RoundedCornerShape(12.dp),
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedBorderColor = Color(0xFF009B4A),
+                            unfocusedBorderColor = Color.LightGray
+                        )
+                    )
+
+                    // Kelompok List
+                    LazyColumn(
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        items(kelompokList.filter {
+                            it.contains(searchQuery, ignoreCase = true)
+                        }) { kelompok ->
+                            KelompokCard(
+                                kelompok = kelompok,
+                                onClick = {
+                                    navController.navigate("kelompok_pengelolaan_absen")
+                                }
                             )
                         }
                     }
-                )
-                Spacer(modifier = Modifier.width(5.dp))
-                Button(
-                    onClick = {
-
-                    },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xff009B4A)),
-                    modifier = Modifier
-                        .requiredWidth(30.dp)
-                        .fillMaxHeight(),
-                    shape = RoundedCornerShape(8.dp)
-                ) {
-                    Column (modifier = Modifier.fillMaxSize()
-
-                    ){
-
-                        Image(
-                            painter = painterResource(id = R.drawable.searchicon),
-                            contentDescription = "Data Peserta Bakti ",
-                            modifier = Modifier
-                                .fillMaxSize()
-                        )
-                    }
                 }
-
             }
-            Spacer(modifier = Modifier.height(50.dp))
-            Button(
-                onClick = {
 
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffdfae4)),
-                modifier = Modifier
-                    .requiredHeight(60.dp)
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(8.dp)
+            // Navigation at bottom
+            Box(
+                modifier = Modifier.align(Alignment.BottomCenter)
             ) {
-                Text(
-                    text = "Kelompok 1",
-                    color = Color(0xff337557),
-                    style = TextStyle(
-                        fontSize = 15.sp),
-                    modifier = Modifier
-                )
+                Navigation(navController = navController, modifier = Modifier)
             }
-            Spacer(modifier = Modifier.height(15.dp))
-            Button(
-                onClick = {
-
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffdfae4)),
-                modifier = Modifier
-                    .requiredHeight(60.dp)
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Text(
-                    text = "Kelompok 2",
-                    color = Color(0xff337557),
-                    style = TextStyle(
-                        fontSize = 15.sp),
-                    modifier = Modifier
-                )
-            }
-            Spacer(modifier = Modifier.height(15.dp))
-            Button(
-                onClick = {
-
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffdfae4)),
-                modifier = Modifier
-                    .requiredHeight(60.dp)
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Text(
-                    text = "Kelompok 3",
-                    color = Color(0xff337557),
-                    style = TextStyle(
-                        fontSize = 15.sp),
-                    modifier = Modifier
-                )
-            }
-            Spacer(modifier = Modifier.height(15.dp))
-            Button(
-                onClick = {
-
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffdfae4)),
-                modifier = Modifier
-                    .requiredHeight(60.dp)
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Text(
-                    text = "Kelompok 4",
-                    color = Color(0xff337557),
-                    style = TextStyle(
-                        fontSize = 15.sp),
-                    modifier = Modifier
-                )
-            }
-            Spacer(modifier = Modifier.height(15.dp))
-            Button(
-                onClick = {
-
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffdfae4)),
-                modifier = Modifier
-                    .requiredHeight(60.dp)
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Text(
-                    text = "Kelompok 5",
-                    color = Color(0xff337557),
-                    style = TextStyle(
-                        fontSize = 15.sp),
-                    modifier = Modifier
-                )
-            }
-            Spacer(modifier = Modifier.height(15.dp))
-            Button(
-                onClick = {
-
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffdfae4)),
-                modifier = Modifier
-                    .requiredHeight(60.dp)
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Text(
-                    text = "Kelompok 6",
-                    color = Color(0xff337557),
-                    style = TextStyle(
-                        fontSize = 15.sp),
-                    modifier = Modifier
-                )
-            }
-            Spacer(modifier = Modifier.height(15.dp))
-            Button(
-                onClick = {
-
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffdfae4)),
-                modifier = Modifier
-                    .requiredHeight(60.dp)
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Text(
-                    text = "Kelompok 7",
-                    color = Color(0xff337557),
-                    style = TextStyle(
-                        fontSize = 15.sp),
-                    modifier = Modifier
-                )
-            }
-
-
-
-
-
-
         }
-
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.Bottom,
-            horizontalAlignment = Alignment.CenterHorizontally,
-
-            ){
-            Navigation(navController, modifier = Modifier)
-        }
-
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun KelompokCard(
+    kelompok: String,
+    onClick: () -> Unit
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick),
+        colors = CardDefaults.cardColors(
+            containerColor = Color(0xFFFDFAE4)
+        ),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 2.dp
+        )
+    ) {
+        Row(
+            modifier = Modifier.padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.Group,
+                contentDescription = null,
+                tint = Color(0xFF337557),
+                modifier = Modifier.size(24.dp)
+            )
+            Spacer(modifier = Modifier.width(16.dp))
+            Column(
+                modifier = Modifier.weight(1f)
+            ) {
+                Text(
+                    text = kelompok,
+                    style = TextStyle(
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium,
+                        color = Color(0xFF337557)
+                    ),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Text(
+                    text = "12 Peserta",
+                    style = TextStyle(
+                        fontSize = 14.sp,
+                        color = Color.Gray
+                    )
+                )
+            }
+        }
+    }
+}
 
 @Preview(widthDp = 360, heightDp = 800)
 @Composable
